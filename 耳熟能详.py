@@ -1,26 +1,44 @@
 import streamlit as st
 
-st.title("朗读练习")
+# 页面标题
+st.markdown("<h1 style='text-align:center;color:orange;'>录音、放音测试</h1>", unsafe_allow_html=True)
 
-text = "生活就像海洋，只有意志坚强的人，才能到达彼岸。\nThis is an apple. I like apples. Apples are good for our health."
+# 提示说明
+st.markdown("""
+<p style='text-align:center;color:green;'>
+朗读任意一段试音内容，并在界面右下角调节录（放）音音量。
+</p>
+""", unsafe_allow_html=True)
 
-st.text_area("朗读文本：", text, height=150)
+# 中英文文本框，带边框和背景色
+st.markdown("""
+<div style="border:2px solid #ccc; padding:15px; border-radius:10px;
+            background-color:#f5faff; text-align:left; font-size:18px;">
+ 生活就像海洋，只有意志坚强的人，才能到达彼岸。<br>
+ This is an apple. I like apples. Apples are good for our health."
+</div>
+""", unsafe_allow_html=True)
 
+# 模拟按钮
 speak_button = """
-<button onclick="speak()">🔊 点击朗读</button>
+<div style="text-align:center; margin-top:20px;">
+    <button onclick="speak()" 
+            style="padding:10px 20px; font-size:16px; background-color:#f4a261;
+                   border-radius:5px; color:white; border:none; cursor:pointer;">
+        开始朗读（并非朗读）
+     </button>
+</div>  
+
 <script>
 function speak(){
-  let msg1 = new SpeechSynthesisUtterance("生活就像海洋，只有意志坚强的人，才能到达彼岸。");
-  msg1.lang = "zh-CN";  // 中文
-  
-  let msg2 = new SpeechSynthesisUtterance("This is an apple. I like Apples. Apples are good for our health.");
-  msg2.lang = "en-US";   //  英文
-  
-  window.speechSynthesis.speak(msg1);
-  window.speechSynthesis.speak(msg2);
+  let msg = new SpeechSynthesisUtterance(
+      "生活就像海洋，只有意志坚强的人，才能到达彼岸。This is an apple. I like Apples. Apples are good for our health."
+  );
+  msg.lang = "zh-CN";   //  中文优先，能同时识别英文
+  window.speechSynthesis.speak(msg);
 }
 </script>
 """
 
-st.components.v1.html(speak_button, height=100)
+st.components.v1.html(speak_button, height=150)
 
