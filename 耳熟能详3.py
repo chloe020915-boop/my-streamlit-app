@@ -1,7 +1,42 @@
 import streamlit as st
 
 # 页面标题
-st.markdown("<h1 style='text-align:center;color:orange;'>录音、放音测试</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align:center;color:orange;'>请按照图示佩戴耳机</h2>", unsafe_allow_html=True)
+
+# 佩戴耳机示意图
+import streamlit as st
+
+st.markdown("""
+<div style="display:flex; justify-content:center; gap:20px")
+
+  <!-- 第一张图 -->
+  <div style="text-align:center;">
+    <img src="image1.jpg" width="120">
+    <p style="color:red; font-size:14px;">话筒略低于嘴巴，距离嘴巴2-3cm。</p>
+  </div>
+
+  <!-- 第二张图 -->
+  <div style="text-align:center;">
+    <ima src="image2.jpg" width="120">
+    <p style="color:red; font-size:14px;">录音过程用手碰话筒</p>
+  </div>
+
+  <!-- 第三张图 -->
+  <div style="text-align:center;">
+    <img src="image3.jpg" width="120">
+    <p style="color:red; font-size:14px;">话筒距离太远</p>
+  </div>
+
+  <!-- 第四张图 -->
+  <div style="text-align:center;">
+    <img src="image4.jpg" width="120">
+    <p style="color:red; font-size:14px;">话筒距离太近</p>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+#测试标题
+st.markdown("<h2 style='text-align:center;color:orange;'>录音、放音测试</h2>", unsafe_allow_html=True)
 
 # 提示说明
 st.markdown("""
@@ -13,13 +48,13 @@ st.markdown("""
 # 中英文文本框，带边框和背景色
 st.markdown("""
 <div style="border:2px solid #ccc; padding:15px; border-radius:10px;
-            background-color:green; text-align:left; font-size:18px; line-height:1.8;">
+            background-color:lightgreen; text-align:left; font-size:18px; line-height:1.8;">
             
- <span style="color:blue;">生活就像海洋，只有意志坚强的人，才能到达彼岸。
+ <span style="color:royalblue;">生活就像海洋，只有意志坚强的人，才能到达彼岸。
  
  <hr style="border:1px dashed #aaa;">
  
- <span style="color:blue;">This is an apple. I like apples. Apples are good for our health.
+ <span style="color:royalblue;">This is an apple. I like apples. Apples are good for our health.
 </div>
 """, unsafe_allow_html=True)
 
@@ -38,7 +73,7 @@ function speak(){
   let msg = new SpeechSynthesisUtterance(
       "生活就像海洋，只有意志坚强的人，才能到达彼岸。This is an apple. I like Apples. Apples are good for our health."
   );
-  msg.lang = "zh-CN";   //  中文优先，能同时识别英文
+  
   window.speechSynthesis.speak(msg);
 }
 </script>
